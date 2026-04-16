@@ -1,24 +1,20 @@
 import math
 
-class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+# Prompt user for vector components
+x = float(input("Enter the x component of the vector: "))
+y = float(input("Enter the y component of the vector: "))
 
-    def magnitude(self):
-        return math.sqrt(self.x**2 + self.y**2)
+# Calculate magnitude
+magnitude = math.sqrt(x**2 + y**2)
 
-    def unit_vector(self):
-        mag = self.magnitude()
-        if mag == 0:
-            raise ValueError('Cannot calculate unit vector for zero vector')
-        return Vector(self.x / mag, self.y / mag)
+# Display the components and magnitude
+print(f"Vector components: x = {x}, y = {y}")
+print(f"Magnitude of the vector: {magnitude}")
 
-    def component_decomposition(self):
-        return self.x, self.y
-
-# Example usage:
-v = Vector(3, 4)
-print('Magnitude:', v.magnitude())
-print('Unit vector:', v.unit_vector().__dict__)
-print('Component decomposition:', v.component_decomposition())
+# Calculate and display the unit vector if magnitude is not zero
+if magnitude != 0:
+    unit_vector_x = x / magnitude
+    unit_vector_y = y / magnitude
+    print(f"Unit vector: ({unit_vector_x}, {unit_vector_y})")
+else:
+    print("Magnitude is zero, cannot compute the unit vector."),
